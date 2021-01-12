@@ -3,6 +3,7 @@
  */
 package ehu.isad;
 
+import ehu.isad.Controllers.UI.PmaKud;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,9 +15,9 @@ import java.io.IOException;
 public class App extends Application {
 
     private Stage stage;
-    private Parent txanponUI;
-    private TxanponKud txanKud;
-    private Scene sceneTxan;
+    private Parent pmaUI;
+    private PmaKud pmaKud;
+    private Scene scenePma;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -24,17 +25,17 @@ public class App extends Application {
         pantailaKargatu();
 
         stage.setTitle("Azterketa");
-        stage.setScene(sceneTxan);
+        stage.setScene(scenePma);
         stage.show();
     }
 
     private void pantailaKargatu() throws IOException {
 
-        FXMLLoader loaderTxanpon = new FXMLLoader(getClass().getResource("/txanpon.fxml"));
-        txanponUI = (Parent) loaderTxanpon.load();
-        this.sceneTxan=new Scene(txanponUI);
-        txanKud = loaderTxanpon.getController();
-        txanKud.setLiburuakApp(this);
+        FXMLLoader loaderPma = new FXMLLoader(getClass().getResource("/pma.fxml"));
+        pmaUI = (Parent) loaderPma.load();
+        this.scenePma=new Scene(pmaUI);
+        pmaKud = loaderPma.getController();
+        pmaKud.setPmaApp(this);
     }
 
     public static void main(String[] args) {
