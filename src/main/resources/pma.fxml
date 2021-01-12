@@ -7,16 +7,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ehu.isad.Controllers.UI.PmaKud">
    <children>
       <TextField fx:id="urlTF" layoutX="80.0" layoutY="43.0" prefHeight="25.0" prefWidth="282.0" />
       <Button fx:id="checkBTN" layoutX="435.0" layoutY="43.0" mnemonicParsing="false" onAction="#onClick" text="Check" />
-      <TableView fx:id="infoT" layoutX="61.0" layoutY="100.0" prefHeight="225.0" prefWidth="467.0">
+      <TableView fx:id="infoT" layoutX="18.0" layoutY="100.0" prefHeight="225.0" prefWidth="570.0">
         <columns>
           <TableColumn fx:id="urlTC" prefWidth="200.66666793823242" text="URL" />
-          <TableColumn fx:id="md5TC" prefWidth="202.66665649414062" text="md5" />
-            <TableColumn fx:id="versionTC" minWidth="0.0" prefWidth="61.99998982747394" text="version" />
+          <TableColumn fx:id="md5TC" prefWidth="296.6666717529297" text="md5" />
+            <TableColumn fx:id="versionTC" minWidth="0.0" prefWidth="70.66668701171875" text="version" />
         </columns>
       </TableView>
       <Label fx:id="egoeraL" layoutX="61.0" layoutY="347.0" prefHeight="17.0" prefWidth="282.0" />

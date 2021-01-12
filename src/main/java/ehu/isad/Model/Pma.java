@@ -6,8 +6,17 @@ public class Pma {
     private String version;
     private String md5;
     private int path;
+    private String url;
 
-    public Pma(int pId,String pVersion, String pMd5, int pPath){
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Pma(int pId, String pVersion, String pMd5, int pPath){
         id=pId;
         version=pVersion;
         md5=pMd5;
