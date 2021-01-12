@@ -11,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,6 +89,14 @@ public class PmaKud implements Initializable {
         urlTC.setCellValueFactory(new PropertyValueFactory<>("url"));
         md5TC.setCellValueFactory(new PropertyValueFactory<>("md5"));
         versionTC.setCellValueFactory(new PropertyValueFactory<>("version"));
+
+        versionTC.setEditable(true);
+        versionTC.setOnEditCommit(
+                t -> {
+                    Pma pma=t.getTableView().getItems().get(t.getTablePosition().getRow());
+                    PmaDBKud.getInstance().sartuDB(pma);
+                }
+        );
 
         infoT.setItems(zerrendaO);
 

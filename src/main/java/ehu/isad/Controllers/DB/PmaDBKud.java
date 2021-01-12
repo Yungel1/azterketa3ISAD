@@ -37,4 +37,9 @@ public class PmaDBKud {
 
         return emaitza;
     }
+    public void sartuDB(Pma pma){
+        String query = "insert into checksums(version,md5,path) values('"+pma.getVersion()+"'+'"+pma.getMd5()+"0"+")";
+        DBKudeatzaile dbKudeatzaile = DBKudeatzaile.getInstantzia();
+        dbKudeatzaile.execSQL(query);
+    }
 }
