@@ -3,12 +3,43 @@
  */
 package ehu.isad;
 
-public class App {
-    public String getGreeting() {
-        return "Hello world.";
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class App extends Application {
+
+    private Stage stage;
+    private Parent txanponUI;
+    private TxanponKud txanKud;
+    private Scene sceneTxan;
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+        pantailaKargatu();
+
+        stage.setTitle("Azterketa");
+        stage.setScene(sceneTxan);
+        stage.show();
+    }
+
+    private void pantailaKargatu() throws IOException {
+
+        FXMLLoader loaderTxanpon = new FXMLLoader(getClass().getResource("/txanpon.fxml"));
+        txanponUI = (Parent) loaderTxanpon.load();
+        this.sceneTxan=new Scene(txanponUI);
+        txanKud = loaderTxanpon.getController();
+        txanKud.setLiburuakApp(this);
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        launch(args);
     }
+
+
 }

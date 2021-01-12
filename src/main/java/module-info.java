@@ -1,5 +1,5 @@
 
-open module whatwebo {
+open module azterketa3ISAD {
 
     requires java.sql;
     requires sqlite.jdbc;

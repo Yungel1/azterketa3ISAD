@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="azterketa.db" uuid="37f37de9-ef8a-42ba-a282-48e58d182fe8">
+    <data-source source="LOCAL" name="azterketa" uuid="3f815470-ff25-4959-a9b6-695a30e06043">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$USER_HOME$/OneDrive/Escritorio/Universidad/3.Kurtsoa/1.Lauhilekoa/ISAD/azterketa/azterketa.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\adria\IdeaProjects\azterketa3ISAD\azterketa.sqlite</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>
