@@ -90,7 +90,17 @@ public class PmaKud implements Initializable {
         md5TC.setCellValueFactory(new PropertyValueFactory<>("md5"));
         versionTC.setCellValueFactory(new PropertyValueFactory<>("version"));
 
-        versionTC.setEditable(true);
+        Callback<TableColumn<Pma, String>, TableCell<Pma, String>> defaultTextFieldCellFactory = TextFieldTableCell.forTableColumn();
+
+        versionTC.setCellFactory(col -> {
+            TableCell<Pma, String> cell = defaultTextFieldCellFactory.call(col);
+
+            cell.setOnMouseClicked(event -> {
+                cell.setEditable(true);
+            });
+            return cell;
+        });
+
         versionTC.setOnEditCommit(
                 t -> {
                     Pma pma=t.getTableView().getItems().get(t.getTablePosition().getRow());
