@@ -1,0 +1,83 @@
+// Works with Gradle 5.7 and Java 12
+
+// To run this do:
+// ./gradlew run
+
+// To build a distribution zip:
+// ./gradlew distZip
+
+
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.beryx.jlink' version '2.21.1'
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+version = '0.0.1'
+group = 'ehu.isad'
+
+java {
+    modularity.inferModulePath.set(true)
+}
+
+application {
+    mainModule = 'azterketa3ISAD' // name defined in module-info.java
+    mainClass = 'ehu.isad.App'
+}
+
+
+
+// ext.moduleName = 'gradlejavafxhelloworld'
+mainClassName = "$moduleName/ehu.isad.App"
+
+
+javafx {
+    version = "12"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing', 'javafx.web']
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+//    implementation "de.jensd:fontawesomefx-fontawesome:11.0", {
+//        exclude group: 'org.openjfx'
+//    }
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+//    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.28.0'
+
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+def newArgs = [ '--add-exports','java.desktop/com.apple.eawt=ALL-UNNAMED',
+                '--add-opens', 'javafx.graphics/javafx.css=de.jensd.fx.fontawesomefx.commons',]
+run {
+    inputs.property('moduleName', moduleName)
+    doFirst {
+        jvmArgs = jvmArgs.plus(newArgs)
+        jvmArgs = jvmArgs.plus(['--module-path', classpath.asPath,
+                                '--patch-module', "$moduleName=" + files(sourceSets.main.output.resourcesDir).asPath,
+                                '--module', "$mainClassName",
+        ])
+        classpath = files()
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
+
+run {
+    standardInput = System.in
+}
